@@ -8,6 +8,7 @@
 [node name="Player" parent="." instance=ExtResource("2_mihwe")]
 z_index = 5
 position = Vector2(178, 202)
+current_tool = 2
 
 [node name="GameTilemap" type="Node" parent="."]
 
