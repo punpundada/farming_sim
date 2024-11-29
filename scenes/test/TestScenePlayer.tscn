@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=4 uid="uid://dy7fjpewwivjc"]
+[gd_scene load_steps=3 format=4 uid="uid://dy7fjpewwivjc"]
 
 [ext_resource type="TileSet" uid="uid://bmqdg60j3c5st" path="res://tile_sets/game_tile_set.tres" id="1_0afao"]
+[ext_resource type="PackedScene" uid="uid://cgak4vkg0kyla" path="res://scenes/characters/player/player.tscn" id="2_mihwe"]
 
 [node name="TestSceneTileMap" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_mihwe")]
+z_index = 5
+position = Vector2(178, 202)
 
 [node name="GameTilemap" type="Node" parent="."]
 
