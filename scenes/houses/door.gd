@@ -8,16 +8,16 @@ extends StaticBody2D
 func _ready() -> void:
 	interactable_component.interactable_activated.connect(on_ineractable_activated)
 	interactable_component.ineractable_deactivated.connect(on_interactable_deactivated)
-	collision_layer =1
+	self.collision_layer=1
 	
 func on_ineractable_activated()->void:
 	collision_shape.disabled = true
 	animated_sprite.play("open_door")
-	collision_layer =2
+	self.collision_layer =2
 func on_interactable_deactivated()->void:
 	collision_shape.disabled = false
 	animated_sprite.play("close_door")
-	collision_layer =1
+	self.collision_layer =1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
