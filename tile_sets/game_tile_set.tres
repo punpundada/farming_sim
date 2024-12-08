@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=14 format=4 uid="uid://bmqdg60j3c5st"]
+[gd_resource type="TileSet" load_steps=23 format=4 uid="uid://bmqdg60j3c5st"]
 
 [ext_resource type="Texture2D" uid="uid://cxic616y8mt5p" path="res://assets/game/tilesets/water.png" id="1_r44oy"]
 [ext_resource type="Texture2D" uid="uid://daau1tnaa5j4b" path="res://assets/game/tilesets/grass.png" id="2_r8ri4"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://ch5ed03k6e0ku" path="res://scenes/houses/mediam_house.tscn" id="5_7wmt8"]
 [ext_resource type="TileSet" uid="uid://p2w1orpnj3yd" path="res://tile_sets/house_tile_set.tres" id="5_64nuu"]
 [ext_resource type="PackedScene" uid="uid://c24uetxdw8qyh" path="res://scenes/objects/trees/SmallTree.tscn" id="7_i8gs3"]
+[ext_resource type="PackedScene" uid="uid://m41i4ih1wrv2" path="res://scenes/objects/trees/LargeTree.tscn" id="8_4ehv5"]
+[ext_resource type="PackedScene" uid="uid://bnlcdyhu8nhr3" path="res://scenes/components/DamageComponent.tscn" id="9_qju36"]
+[ext_resource type="PackedScene" uid="uid://b3e63p1lobby6" path="res://scenes/components/HurtComponent.tscn" id="10_bu3y3"]
+[ext_resource type="PackedScene" uid="uid://bt27hqupm2wyu" path="res://scenes/objects/rocks/Rock.tscn" id="10_rugso"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4fqey"]
 texture = ExtResource("1_r44oy")
@@ -489,10 +493,62 @@ _bundled = {
 "version": 3
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aaf0"]
+atlas = ExtResource("4_541ar")
+region = Rect2(114, 18, 10, 8)
+
+[sub_resource type="GDScript" id="GDScript_2k6rq"]
+script/source = "extends Sprite2D
+
+@onready var damage_component: DamageComponent = $DamageComponent
+@onready var hurt_component: HurtComponent = $HurtComponent
+const STONE = preload(\"res://scenes/objects/rocks/stone.tscn\")
+
+#func _ready() -> void:
+	#hurt_component.hurt.connect(on_hurt)
+	#damage_component.max_damage_reached.connect(on_max_damage_reached)
+
+func on_max_damage_reached()->void:
+#	we have to call defred because queing free and adding new scene will give error
+#	hence call_deferred will call given func name in next frame
+	self.call_deferred(\"add_stone_scene\")
+	self.queue_free()
+	
+func on_hurt(hit_damage:int)->void:
+	damage_component.apply_damage(hit_damage)
+
+func add_stone_scene()->void:
+	var stone_scene = STONE.instantiate() as Node2D
+	stone_scene.global_position = self.global_position
+	self.get_parent().add_child(stone_scene)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ib5cq"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ap0v2"]
+radius = 4.0
+
+[sub_resource type="PackedScene" id="PackedScene_gf47w"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1, 0, 14, 13, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Rock", "texture", "script", "Sprite2D", "DamageComponent", "max_damage", "StaticBody2D", "CollisionShape2D", "shape", "HurtComponent", "tool", "HurtCollisionShape2D", "debug_color", "on_max_damage_reached", "max_damage_reached"),
+"node_count": 6,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 2147483647, 4, 2, 1, 5, 3, 0, 0, 0, 6, 6, -1, 0, 0, 2, 0, 7, 7, -1, 1, 8, 4, 0, 0, 0, 2147483647, 9, 5, 1, 10, 6, 0, 4, 0, 7, 11, -1, 2, 8, 7, 12, 8, 0),
+"variants": [SubResource("AtlasTexture_8aaf0"), SubResource("GDScript_2k6rq"), ExtResource("9_qju36"), 5, SubResource("CircleShape2D_ib5cq"), ExtResource("10_bu3y3"), 1, SubResource("CircleShape2D_ap0v2"), Color(0.850094, 0.277818, 0.633716, 0.42)],
+"version": 3
+}
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_wr8li"]
 scenes/1/scene = SubResource("PackedScene_mjp7j")
 scenes/2/scene = ExtResource("5_7wmt8")
 scenes/3/scene = ExtResource("7_i8gs3")
+scenes/4/scene = ExtResource("8_4ehv5")
+scenes/7/scene = SubResource("PackedScene_gf47w")
+scenes/8/scene = ExtResource("10_rugso")
 
 [resource]
 terrain_set_0/mode = 0

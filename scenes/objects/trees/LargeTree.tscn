@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://m41i4ih1wrv2"]
+
+[ext_resource type="Texture2D" uid="uid://ciruqobqw07ub" path="res://assets/game/objects/basic_grass_biom_things.png" id="1_0o1in"]
+[ext_resource type="Shader" path="res://scenes/objects/shake.gdshader" id="1_ieaw3"]
+[ext_resource type="Script" path="res://scenes/objects/trees/large_tree.gd" id="2_c3mpk"]
+[ext_resource type="PackedScene" uid="uid://b3e63p1lobby6" path="res://scenes/components/HurtComponent.tscn" id="2_j2qgw"]
+[ext_resource type="PackedScene" uid="uid://bnlcdyhu8nhr3" path="res://scenes/components/DamageComponent.tscn" id="2_syjqj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bpex"]
+resource_local_to_scene = true
+shader = ExtResource("1_ieaw3")
+shader_parameter/shake_intensity = 0.0
+shader_parameter/shake_speed = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qciha"]
+atlas = ExtResource("1_0o1in")
+region = Rect2(16, 0, 32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwhip"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1rw0y"]
+radius = 9.0
+
+[node name="LargeTree" type="Sprite2D"]
+material = SubResource("ShaderMaterial_8bpex")
+position = Vector2(0, -12)
+texture = SubResource("AtlasTexture_qciha")
+script = ExtResource("2_c3mpk")
+
+[node name="DamageComponent" parent="." instance=ExtResource("2_syjqj")]
+max_damage = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_wwhip")
+
+[node name="HurtComponent" parent="." instance=ExtResource("2_j2qgw")]
+
+[node name="HurtComponentCollisionShape" type="CollisionShape2D" parent="HurtComponent"]
+shape = SubResource("CapsuleShape2D_1rw0y")
+debug_color = Color(0.808112, 0.402851, 0.259776, 0.42)
+
+[connection signal="max_damage_reached" from="DamageComponent" to="." method="on_max_damage"]
+[connection signal="hurt" from="HurtComponent" to="." method="on_hurt"]

@@ -18,6 +18,3 @@ func on_interactable_deactivated()->void:
 	collision_shape.disabled = false
 	animated_sprite.play("close_door")
 	self.collision_layer =1
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
