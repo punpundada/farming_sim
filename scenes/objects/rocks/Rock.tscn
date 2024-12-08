@@ -17,7 +17,7 @@ atlas = ExtResource("1_fj3cc")
 region = Rect2(128, 18, 16, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ao1u"]
-radius = 6.0
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nc7xe"]
 radius = 9.0
