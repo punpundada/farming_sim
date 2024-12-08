@@ -15,6 +15,7 @@ texture = SubResource("AtlasTexture_55qoi")
 
 [node name="CollectableComponent" parent="." instance=ExtResource("2_j67tq")]
 collectable_name = "log"
+wait_time_sec = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
 position = Vector2(0, 0.5)

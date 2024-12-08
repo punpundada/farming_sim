@@ -30,7 +30,7 @@ tile_set = ExtResource("2_iv4tx")
 
 [node name="Overgroth" type="TileMapLayer" parent="GameTilemap"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAQAA4AAwADAAAAAAAXAA8AAwAIAAIAAAA=")
+tile_map_data = PackedByteArray("AAAQAA4AAwADAAAAAAAXAA8AAwAIAAIAAAAYAAoAAwADAAIAAAAaAAoAAwAEAAIAAAAZAAsAAwAFAAIAAAAXAAsAAwAHAAAAAAAYAAwAAwAIAAAAAAAXAAwAAwAFAAAAAAAYAA0AAwAGAAIAAAAaAAwAAwAHAAIAAAAaAA0AAwAHAAMAAAAZAA0AAwAGAAMAAAA=")
 tile_set = ExtResource("2_iv4tx")
 
 [node name="Object" type="TileMapLayer" parent="GameTilemap"]

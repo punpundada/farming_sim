@@ -17,12 +17,13 @@ atlas = ExtResource("1_fj3cc")
 region = Rect2(128, 18, 16, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ao1u"]
-radius = 5.0
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nc7xe"]
 radius = 9.0
 
 [node name="Rock" type="Sprite2D"]
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_qewpy")
 texture = SubResource("AtlasTexture_6hx18")
 script = ExtResource("2_rb41k")
@@ -33,6 +34,7 @@ max_damage = 4
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_8ao1u")
 
 [node name="HurtComponent" parent="." instance=ExtResource("2_mm0qe")]

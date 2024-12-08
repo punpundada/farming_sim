@@ -5,9 +5,6 @@ extends Sprite2D
 @onready var damage_component: DamageComponent = $DamageComponent
 const STONE = preload("res://scenes/objects/rocks/stone.tscn")
 
-func _ready() -> void:
-	hurt_component.hurt.connect(_on_hurt)
-	damage_component.max_damage_reached.connect(on_max_damage_reached)
 
 func _on_hurt(hit_damage: int) -> void:
 	damage_component.apply_damage(hit_damage)
