@@ -12,7 +12,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var collision_shape = self.get_child(1)
 		#disable_collision_shape(collision_shape)
-		self.call_deferred("disable_collision_shape",collision_shape)
+		#self.call_deferred("disable_collision_shape",collision_shape)
+		Callable(disable_collision_shape).call_deferred(collision_shape)
 		timer.start()
 
 func disable_collision_shape(collision_shape: Node2D)->void:

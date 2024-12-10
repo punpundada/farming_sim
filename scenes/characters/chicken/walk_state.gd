@@ -10,7 +10,7 @@ var speed:float = min_speed
 
 func _ready() -> void:
 #	call deferred will call Idle time happens mainly at the end of process and physics frames.
-	self.call_deferred("character_setup")
+	Callable(character_setup).call_deferred()
 #	this will call the function after the current frame has finished processing
 	
 	navigation_agent.velocity_computed.connect(on_safe_velocoty_computed) # this signal is for if avoidance detection is on
@@ -34,9 +34,6 @@ func set_movement_target()->void:
 # 	even if it changed direction and moving to that direction 
 	
 	
-func _on_process(_delta : float) -> void:
-	pass
-
 
 func _on_physics_process(_delta : float) -> void:
 	if navigation_agent.is_navigation_finished():
