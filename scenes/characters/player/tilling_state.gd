@@ -24,7 +24,6 @@ func _on_next_transitions() -> void:
 
 # all chopping animation has looping off by pressing button to the left of FPS
 func _on_enter() -> void:
-	print("inside chopping")
 	if player.player_direction == Vector2.UP:
 		animated_sprite.play(animation_states.get(GameInputEvents.Direction.UP))
 	if player.player_direction == Vector2.DOWN:
