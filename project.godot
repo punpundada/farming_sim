@@ -34,6 +34,10 @@ folder_colors={
 "res://tile_sets/": "yellow"
 }
 
+[global_group]
+
+navigation_polygon_source_geometry_group=""
+
 [input]
 
 walk_up={
@@ -71,10 +75,12 @@ hit={
 2d_physics/layer_1="Ground"
 2d_navigation/layer_1="chicken_navigation"
 2d_physics/layer_2="Player"
+2d_navigation/layer_2="cow_navigation"
 2d_physics/layer_3="Interactables"
 2d_physics/layer_4="Tools"
 2d_physics/layer_5="Objects"
 2d_physics/layer_6="Collectables"
+2d_physics/layer_7="npc_layer"
 
 [rendering]
 
