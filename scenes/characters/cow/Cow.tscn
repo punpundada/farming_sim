@@ -59,12 +59,14 @@ radius = 4.0
 height = 16.0
 
 [node name="Cow" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 64
 script = ExtResource("1_6cud2")
 min_walk_cycles = 1
 max_walk_cycles = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_xn2vg")
 animation = &"idle"

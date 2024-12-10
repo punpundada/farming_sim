@@ -79,22 +79,22 @@ navigation_layers = 2
 position = Vector2(181, 189)
 
 [node name="Cow2" parent="Cows" instance=ExtResource("4_fnk73")]
-position = Vector2(254, 203)
+position = Vector2(226, 230)
 
 [node name="Cow4" parent="Cows" instance=ExtResource("4_fnk73")]
 position = Vector2(253, 165)
 
 [node name="Cow5" parent="Cows" instance=ExtResource("4_fnk73")]
-position = Vector2(300, 51)
+position = Vector2(268, 47)
 
 [node name="Cow6" parent="Cows" instance=ExtResource("4_fnk73")]
 position = Vector2(324, 150)
 
 [node name="Cow7" parent="Cows" instance=ExtResource("4_fnk73")]
-position = Vector2(347, 229)
+position = Vector2(123, 183)
 
 [node name="Cow8" parent="Cows" instance=ExtResource("4_fnk73")]
-position = Vector2(360, 198)
+position = Vector2(367, 248)
 
 [node name="Cow3" parent="Cows" instance=ExtResource("4_fnk73")]
 position = Vector2(207, 158)
